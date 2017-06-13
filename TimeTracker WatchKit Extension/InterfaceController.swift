@@ -12,6 +12,10 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet var clockButton: WKInterfaceButton!
+    @IBOutlet var middleLabel: WKInterfaceLabel!
+    @IBOutlet var topLabel: WKInterfaceLabel!
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -28,4 +32,7 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    @IBAction func ClockInOutTapped() {
+        clockButton.setTitle("Clock-Out")
+    }
 }

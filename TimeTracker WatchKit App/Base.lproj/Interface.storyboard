@@ -1,15 +1,45 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TimeTracker_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" text="Today : 3h 4m" id="AVa-we-mPc">
+                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        </label>
+                        <label alignment="center" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.5" id="hiQ-pk-QAc">
+                            <string key="text">Today
+13h 4m</string>
+                            <color key="textColor" red="0.1764705882" green="0.66666666669999997" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="italicSystem" weight="medium" pointSize="35"/>
+                        </label>
+                        <button width="0.90000000000000002" alignment="center" title="Clock-In" id="9EE-7z-z0n">
+                            <connections>
+                                <action selector="ClockInOutTapped" destination="AgC-eL-Hgc" id="iAi-Fw-hU4"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" verticalAlignment="bottom" id="hvL-rf-Jds">
+                            <color key="color" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </separator>
+                    </items>
+                    <connections>
+                        <outlet property="clockButton" destination="9EE-7z-z0n" id="J8j-pG-FNT"/>
+                        <outlet property="middleLabel" destination="hiQ-pk-QAc" id="o2z-6D-NuH"/>
+                        <outlet property="topLabel" destination="AVa-we-mPc" id="Sjq-0C-foU"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="248" y="66"/>
         </scene>
     </scenes>
 </document>
