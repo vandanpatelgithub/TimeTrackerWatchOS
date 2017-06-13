@@ -17,13 +17,13 @@
                         <label alignment="center" text="Today : 3h 4m" id="AVa-we-mPc">
                             <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                         </label>
-                        <label alignment="center" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.5" id="hiQ-pk-QAc">
+                        <label alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" minimumScaleFactor="0.5" id="hiQ-pk-QAc">
                             <string key="text">Today
 13h 4m</string>
                             <color key="textColor" red="0.1764705882" green="0.66666666669999997" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" type="italicSystem" weight="medium" pointSize="35"/>
                         </label>
-                        <button width="0.90000000000000002" alignment="center" title="Clock-In" id="9EE-7z-z0n">
+                        <button width="0.90000000000000002" alignment="center" verticalAlignment="bottom" title="Clock-In" id="9EE-7z-z0n">
                             <connections>
                                 <action selector="ClockInOutTapped" destination="AgC-eL-Hgc" id="iAi-Fw-hU4"/>
                             </connections>
