@@ -11,7 +11,7 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
-
+    
     @IBOutlet var clockButton: WKInterfaceButton!
     @IBOutlet var middleLabel: WKInterfaceLabel!
     @IBOutlet var topLabel: WKInterfaceLabel!
@@ -40,14 +40,71 @@ class InterfaceController: WKInterfaceController {
             clockButton.setBackgroundColor(UIColor.red)
         }
     }
-
+    
     @IBAction func ClockInOutTapped() {
         if clockedIn {
-            updateUI(clockedIn: clockedIn)
-            clockedIn = false
+            clockOut()
         } else {
-            updateUI(clockedIn: clockedIn)
-            clockedIn = true
+            clockIn()
+            
         }
     }
+    
+    func clockIn() {
+        updateUI(clockedIn: clockedIn)
+        clockedIn = true
+        UserDefaults.standard.set(Date(), forKey: "clockedIn")
+        UserDefaults.standard.synchronize()
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            guard let clockedInDate = UserDefaults.standard.value(forKey: "clockedIn") as? Date else { return }
+            let timeInterval = Int(Date().timeIntervalSince(clockedInDate))
+            
+            let hours = timeInterval / 3600
+            let minutes = (timeInterval % 3600) / 60
+            let seconds = timeInterval % 60
+            
+            self.middleLabel.setText("\(hours)h \(minutes)m \(seconds)s")
+        }
+    }
+    
+    func clockOut() {
+        
+        updateUI(clockedIn: clockedIn)
+        clockedIn = false
+        guard let clockedInDate = UserDefaults.standard.value(forKey: "clockedIn") as? Date else { return }
+        
+        guard var clockIns = UserDefaults.standard.array(forKey: "clockIns") as? [Date] else
+        {
+            UserDefaults.standard.set([clockedInDate], forKey: "clockIns")
+            return
+        }
+        
+        clockIns.insert(clockedInDate, at: 0)
+        UserDefaults.standard.set(clockIns, forKey: "clockIns")
+        
+        guard var clockOuts = UserDefaults.standard.array(forKey: "clockOuts") as? [Date] else {
+            UserDefaults.standard.set([Date()], forKey: "clockOuts")
+            return
+        }
+        
+        clockOuts.insert(Date(), at: 0)
+        UserDefaults.standard.set(clockOuts, forKey: "clockOuts")
+        
+        UserDefaults.standard.set(nil, forKey: "clockedIn")
+        
+        UserDefaults.standard.synchronize()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
